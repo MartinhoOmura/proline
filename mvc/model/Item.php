@@ -187,8 +187,6 @@ class Item extends Model {
     public function getStEntregaItem(){
         if ($this->getQtEntregue() < $this->getQtItem()){
             return 'PN';
-        }else{
-            return 'EN';
         }
     }
 
