@@ -8,7 +8,7 @@ $(document).ready(function(){
     $('select[name="idPessoa"]').filterByText($('#buscaPessoa'), true);
     
     $('button[form="frmPedido"]').click(function(e){
-        if ($('#itens').find('tbody').find('tr').length == 0){
+        if ($('#itens').find('tbody').find('tr').length === 0){
             msg('info', '<span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;Nenhum item adicionado no pedido!');
             e.preventDefault();
         }
