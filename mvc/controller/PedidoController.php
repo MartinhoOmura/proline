@@ -22,7 +22,7 @@
                 $pedido = Pedido::find($id);
                 $itens = $pedido->getItens();
                 foreach($itens as $item){
-                    if ($item->getStEntregaItem() == 'PN'){
+                    if ($item->getStEntregaItem() === 'PN'){
                         $entrega = array(
                             "nrEntrega" => count($item->getEntregas()) + 1,
                             "dtEntrega" => date('Y-m-d', time()),

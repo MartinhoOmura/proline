@@ -75,13 +75,13 @@ class OracleSchemaManager extends AbstractSchemaManager
 
             $keyName = strtolower($tableIndex['name']);
 
-            if ( strtolower($tableIndex['is_primary']) == "p" ) {
+            if ( strtolower($tableIndex['is_primary']) === "p" ) {
                 $keyName = 'primary';
                 $buffer['primary'] = true;
                 $buffer['non_unique'] = false;
             } else {
                 $buffer['primary'] = false;
-                $buffer['non_unique'] = ( $tableIndex['is_unique'] == 0 ) ? true : false;
+                $buffer['non_unique'] = ( $tableIndex['is_unique'] === 0 ) ? true : false;
             }
             $buffer['key_name'] = $keyName;
             $buffer['column_name'] = $tableIndex['column_name'];
@@ -132,15 +132,15 @@ class OracleSchemaManager extends AbstractSchemaManager
 
         switch ($dbType) {
             case 'number':
-                if ($tableColumn['data_precision'] == 20 && $tableColumn['data_scale'] == 0) {
+                if ($tableColumn['data_precision'] === 20 && $tableColumn['data_scale'] === 0) {
                     $precision = 20;
                     $scale = 0;
                     $type = 'bigint';
-                } elseif ($tableColumn['data_precision'] == 5 && $tableColumn['data_scale'] == 0) {
+                } elseif ($tableColumn['data_precision'] === 5 && $tableColumn['data_scale'] === 0) {
                     $type = 'smallint';
                     $precision = 5;
                     $scale = 0;
-                } elseif ($tableColumn['data_precision'] == 1 && $tableColumn['data_scale'] == 0) {
+                } elseif ($tableColumn['data_precision'] === 1 && $tableColumn['data_scale'] === 0) {
                     $precision = 1;
                     $scale = 0;
                     $type = 'boolean';
@@ -215,7 +215,7 @@ class OracleSchemaManager extends AbstractSchemaManager
         foreach ($tableForeignKeys as $value) {
             $value = \array_change_key_case($value, CASE_LOWER);
             if (!isset($list[$value['constraint_name']])) {
-                if ($value['delete_rule'] == "NO ACTION") {
+                if ($value['delete_rule'] === "NO ACTION") {
                     $value['delete_rule'] = null;
                 }
 

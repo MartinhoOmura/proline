@@ -187,7 +187,7 @@ abstract class AbstractQuery
             function ($parameter) use ($key)
             {
                 // Must not be identical because of string to integer conversion
-                return ($key == $parameter->getName());
+                return ($key === $parameter->getName());
             }
         );
 
@@ -238,7 +238,7 @@ abstract class AbstractQuery
             function ($parameter) use ($key)
             {
                 // Must not be identical because of string to integer conversion
-                return ($key == $parameter->getName());
+                return ($key === $parameter->getName());
             }
         );
 

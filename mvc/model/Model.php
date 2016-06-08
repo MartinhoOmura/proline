@@ -15,9 +15,9 @@ abstract class Model {
 	public function getHtmlData(){
     	$htmlDataString = "";
         foreach(get_class_methods(get_called_class()) as $method){
-        	if (substr($method, 0, 3) == "get" && $method != "getHtmlData" && $method != "getPK"){
+        	if (substr($method, 0, 3) === "get" && $method != "getHtmlData" && $method != "getPK"){
         		$ref = new ReflectionMethod($this, $method);
-        		if (sizeOf($ref->getParameters()) == 0){
+        		if (sizeOf($ref->getParameters()) === 0){
 	        		$field = strtolower(substr($method, 3));
 	        		$value = $this->$method();
 	        		if (is_object($value)){

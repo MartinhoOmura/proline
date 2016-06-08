@@ -64,7 +64,7 @@ class MySqlSchemaManager extends AbstractSchemaManager
     {
         foreach($tableIndexes as $k => $v) {
             $v = array_change_key_case($v, CASE_LOWER);
-            if($v['key_name'] == 'PRIMARY') {
+            if($v['key_name'] === 'PRIMARY') {
                 $v['primary'] = true;
             } else {
                 $v['primary'] = false;
@@ -156,7 +156,7 @@ class MySqlSchemaManager extends AbstractSchemaManager
                 break;
         }
 
-        $length = ((int) $length == 0) ? null : (int) $length;
+        $length = ((int) $length === 0) ? null : (int) $length;
 
         $options = array(
             'length'        => $length,
@@ -187,10 +187,10 @@ class MySqlSchemaManager extends AbstractSchemaManager
         foreach ($tableForeignKeys as $value) {
             $value = array_change_key_case($value, CASE_LOWER);
             if (!isset($list[$value['constraint_name']])) {
-                if (!isset($value['delete_rule']) || $value['delete_rule'] == "RESTRICT") {
+                if (!isset($value['delete_rule']) || $value['delete_rule'] === "RESTRICT") {
                     $value['delete_rule'] = null;
                 }
-                if (!isset($value['update_rule']) || $value['update_rule'] == "RESTRICT") {
+                if (!isset($value['update_rule']) || $value['update_rule'] === "RESTRICT") {
                     $value['update_rule'] = null;
                 }
 

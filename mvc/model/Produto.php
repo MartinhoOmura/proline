@@ -280,14 +280,14 @@ class Produto extends Model {
     // metodo auxiliar
     public function getVlUnitario($operacao, $unidade) {
 
-        if ($operacao == 'compra') {
+        if ($operacao === 'compra') {
             $valor = $this->getVlCompra();
         } else {
             $valor = $this->getVlVenda();
         }
 
         // se a unidade ja é a desejada, retorne o valor cadastrado
-        if ($this->getCdUnidade() == $unidade) {
+        if ($this->getCdUnidade() === $unidade) {
             return $valor;
         } else {
             // tratar unidade desejada caso seja diferente da cadastrada
@@ -318,7 +318,7 @@ class Produto extends Model {
     public function getQtEstoque($unidade){
         $qtde = 0;
         foreach($this->itens as $item){
-            $qtde += $item->getPedido()->getTpPedido() == 'C' ? $item->getQtEquivalente($unidade) : -$item->getQtEquivalente($unidade);
+            $qtde += $item->getPedido()->getTpPedido() === 'C' ? $item->getQtEquivalente($unidade) : -$item->getQtEquivalente($unidade);
         }
         return $qtde;
     }
@@ -327,7 +327,7 @@ class Produto extends Model {
     public function getQtEquivalente($valor, $unidade){
 
         // se a unidade ja é a desejada, retorne o valor cadastrado
-        if ($this->getCdUnidade() == $unidade) {
+        if ($this->getCdUnidade() === $unidade) {
             return $valor;
         } else {
             // tratar unidade desejada caso seja diferente da cadastrada
@@ -357,7 +357,7 @@ class Produto extends Model {
     
     // metodo auxiliar
     public function getQtFaltante(){
-        if ($this->getStEstoque() == "FT"){
+        if ($this->getStEstoque() === "FT"){
             return $this->getQtMinimo() - $this->getQtEstoque($this->getCdUnidade());
         }else{
             return 0;
@@ -369,7 +369,7 @@ class Produto extends Model {
         $data = "";
         foreach($this->itens as $item){
             foreach($item->getEntregas() as $entrega){
-                if ($data == "" || new DateTime($entrega->getDtEntrega()) > new DateTime($data)) {
+                if ($data === "" || new DateTime($entrega->getDtEntrega()) > new DateTime($data)) {
                     $data = $entrega->getDtEntrega();
                 }
             }
@@ -424,7 +424,7 @@ class Produto extends Model {
         $request['vlMTPC'] = str_replace(',', '.', $request['vlMTPC']);
         $request['qtMinimo'] = str_replace(',', '.', $request['qtMinimo']);
 
-        $request['idPessoa'] = $request['idPessoa'] == "" ? null : $request['idPessoa'];
+        $request['idPessoa'] = $request['idPessoa'] === "" ? null : $request['idPessoa'];
 
         $id = $db->insert("produto", $request);
 
@@ -442,7 +442,7 @@ class Produto extends Model {
         $request['vlMTPC'] = str_replace(',', '.', $request['vlMTPC']);
         $request['qtMinimo'] = str_replace(',', '.', $request['qtMinimo']);
 
-        $request['idPessoa'] = $request['idPessoa'] == "" ? null : $request['idPessoa'];
+        $request['idPessoa'] = $request['idPessoa'] === "" ? null : $request['idPessoa'];
 
         $id = $db->update("produto", $request, $id);
 

@@ -10,7 +10,7 @@ $(document).ready(function() {
                 if (tpPagamento != "DN" && tpPagamento != "DB" && tpPagamento != "CR" && tpPagamento != "CH" && tpPagamento != "X"){
                     tpPagamento = "";
                 }
-            }while(tpPagamento == "")
+            }while(tpPagamento === "")
             
             if (tpPagamento != 'X'){
                 var id = $(this).closest('.row').data('idpessoa');
@@ -32,7 +32,7 @@ $(document).ready(function() {
                 if (tpPagamento != "DN" && tpPagamento != "DB" && tpPagamento != "CR" && tpPagamento != "CH" && tpPagamento != "X"){
                     tpPagamento = "";
                 }
-            }while(tpPagamento == "")
+            }while(tpPagamento === "")
             
             if (tpPagamento != 'X'){
                 var id = $(this).closest('.row').data('idpessoa');

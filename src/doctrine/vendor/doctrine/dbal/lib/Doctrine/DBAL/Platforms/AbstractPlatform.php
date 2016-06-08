@@ -825,7 +825,7 @@ abstract class AbstractPlatform
         // TODO: fix this code: the method does not exist
         $values = $this->getIdentifiers($values);
 
-        if (count($values) == 0) {
+        if (count($values) === 0) {
             throw new \InvalidArgumentException('Values must not be empty.');
         }
 
@@ -1253,7 +1253,7 @@ abstract class AbstractPlatform
             $columnData['version'] = $column->hasPlatformOption("version") ? $column->getPlatformOption('version') : false;
             $columnData['comment'] = $this->getColumnComment($column);
 
-            if (strtolower($columnData['type']) == "string" && $columnData['length'] === null) {
+            if (strtolower($columnData['type']) === "string" && $columnData['length'] === null) {
                 $columnData['length'] = 255;
             }
 
@@ -1448,7 +1448,7 @@ abstract class AbstractPlatform
         $name = $index->getQuotedName($this);
         $columns = $index->getQuotedColumns($this);
 
-        if (count($columns) == 0) {
+        if (count($columns) === 0) {
             throw new \InvalidArgumentException("Incomplete definition. 'columns' required.");
         }
 
@@ -1894,13 +1894,13 @@ abstract class AbstractPlatform
             if (isset($field['type'])) {
                 if (in_array((string)$field['type'], array("Integer", "BigInteger", "SmallInteger"))) {
                     $default = " DEFAULT ".$field['default'];
-                } else if ((string)$field['type'] == 'DateTime' && $field['default'] == $this->getCurrentTimestampSQL()) {
+                } else if ((string)$field['type'] === 'DateTime' && $field['default'] === $this->getCurrentTimestampSQL()) {
                     $default = " DEFAULT ".$this->getCurrentTimestampSQL();
-                } else if ((string)$field['type'] == 'Time' && $field['default'] == $this->getCurrentTimeSQL()) {
+                } else if ((string)$field['type'] === 'Time' && $field['default'] === $this->getCurrentTimeSQL()) {
                     $default = " DEFAULT ".$this->getCurrentTimeSQL();
-                } else if ((string)$field['type'] == 'Date' && $field['default'] == $this->getCurrentDateSQL()) {
+                } else if ((string)$field['type'] === 'Date' && $field['default'] === $this->getCurrentDateSQL()) {
                     $default = " DEFAULT ".$this->getCurrentDateSQL();
-                } else if ((string) $field['type'] == 'Boolean') {
+                } else if ((string) $field['type'] === 'Boolean') {
                     $default = " DEFAULT '" . $this->convertBooleans($field['default']) . "'";
                 }
             }

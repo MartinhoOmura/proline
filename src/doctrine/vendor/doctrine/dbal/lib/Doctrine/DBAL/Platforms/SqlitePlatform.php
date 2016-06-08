@@ -115,7 +115,7 @@ class SqlitePlatform extends AbstractPlatform
      */
     public function getLocateExpression($str, $substr, $startPos = false)
     {
-        if ($startPos == false) {
+        if ($startPos === false) {
             return 'LOCATE('.$str.', '.$substr.')';
         }
 
@@ -826,14 +826,14 @@ class SqlitePlatform extends AbstractPlatform
             $type = (string) $field['type'];
             switch (true) {
                 case isset($field['columnDefinition']) || $field['autoincrement'] || $field['unique']:
-                case $type == 'DateTime' && $field['default'] == $this->getCurrentTimestampSQL():
-                case $type == 'Date' && $field['default'] == $this->getCurrentDateSQL():
-                case $type == 'Time' && $field['default'] == $this->getCurrentTimeSQL():
+                case $type === 'DateTime' && $field['default'] === $this->getCurrentTimestampSQL():
+                case $type === 'Date' && $field['default'] === $this->getCurrentDateSQL():
+                case $type === 'Time' && $field['default'] === $this->getCurrentTimeSQL():
                     return false;
             }
 
             $field['name'] = $column->getQuotedName($this);
-            if (strtolower($field['type']) == 'string' && $field['length'] === null) {
+            if (strtolower($field['type']) === 'string' && $field['length'] === null) {
                 $field['length'] = 255;
             }
 

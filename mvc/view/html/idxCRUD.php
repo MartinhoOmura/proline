@@ -1,5 +1,5 @@
 <div class='row'>
-    <?php if ($_GET['p'] == "pedidos"): ?>
+    <?php if ($_GET['p'] === "pedidos"): ?>
         <div class='col-xs-12 col-md-4'>
             <input id="data" type="date" class="form-control" value="<?= isset($_GET['d']) ? $_GET['d'] : '' ?>" />
         </div>

@@ -80,7 +80,7 @@ class CommitOrderCalculator
         $nodeCount = count($this->_classes);
 
         if ($nodeCount <= 1) {
-            return ($nodeCount == 1) ? array_values($this->_classes) : array();
+            return ($nodeCount === 1) ? array_values($this->_classes) : array();
         }
 
         // Init
@@ -90,7 +90,7 @@ class CommitOrderCalculator
 
         // Go
         foreach ($this->_classes as $node) {
-            if ($this->_nodeStates[$node->name] == self::NOT_VISITED) {
+            if ($this->_nodeStates[$node->name] === self::NOT_VISITED) {
                 $this->_visitNode($node);
             }
         }
@@ -113,7 +113,7 @@ class CommitOrderCalculator
 
         if (isset($this->_relatedClasses[$node->name])) {
             foreach ($this->_relatedClasses[$node->name] as $relatedNode) {
-                if ($this->_nodeStates[$relatedNode->name] == self::NOT_VISITED) {
+                if ($this->_nodeStates[$relatedNode->name] === self::NOT_VISITED) {
                     $this->_visitNode($relatedNode);
                 }
             }

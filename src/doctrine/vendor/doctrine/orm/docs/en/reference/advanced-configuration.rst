@@ -14,7 +14,7 @@ steps of configuration.
     
     // ...
     
-    if ($applicationMode == "development") {
+    if ($applicationMode === "development") {
         $cache = new \Doctrine\Common\Cache\ArrayCache;
     } else {
         $cache = new \Doctrine\Common\Cache\ApcCache;
@@ -28,7 +28,7 @@ steps of configuration.
     $config->setProxyDir('/path/to/myproject/lib/MyProject/Proxies');
     $config->setProxyNamespace('MyProject\Proxies');
     
-    if ($applicationMode == "development") {
+    if ($applicationMode === "development") {
         $config->setAutoGenerateProxyClasses(true);
     } else {
         $config->setAutoGenerateProxyClasses(false);

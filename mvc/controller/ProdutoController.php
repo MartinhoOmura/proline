@@ -53,8 +53,8 @@
                 
                 // agrupar produtos em falta por fornecedor
                 foreach($produtos as $produto){
-                    if ($produto->getStEstoque() == 'FT'){
-                        $agrupamentos[$produto->getPessoa() == null ? 0 : $produto->getPessoa()->getIdPessoa()][] = array(
+                    if ($produto->getStEstoque() === 'FT'){
+                        $agrupamentos[$produto->getPessoa() === null ? 0 : $produto->getPessoa()->getIdPessoa()][] = array(
                             "nrItem" => 1,
                             "qtItem" => $produto->getQtMinimo() * 2,
                             "cdUnidadeItem" => $produto->getCdUnidade(),
@@ -73,7 +73,7 @@
                     	"dsPedido" => "Reposição de estoque",
                     	"dsEndereco" => "",
                     	"vlDesconto" => 0,
-                    	"idPessoa" => $idFornecedor == 0 ? null : $idFornecedor,
+                    	"idPessoa" => $idFornecedor === 0 ? null : $idFornecedor,
                     	"itens" => $agrupamento
                     ));
                 }

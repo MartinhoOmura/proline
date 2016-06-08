@@ -11,8 +11,8 @@
             <div class="col-xs-12 col-md-4">
                 
                 <ul class="list-group">
-                    <li class="list-group-item"><span class="badge badge-primary"><?= $pessoa->getTpPessoa() == 'C' ? 'Cliente' : 'Fornecedor'; ?></span>Tipo</li>
-                    <li class="list-group-item"><span class="badge badge-primary"><?= $pessoa->getDsPessoa() == 'F' ? 'Física' : 'Jurídica'; ?></span>Pessoa</li>
+                    <li class="list-group-item"><span class="badge badge-primary"><?= $pessoa->getTpPessoa() === 'C' ? 'Cliente' : 'Fornecedor'; ?></span>Tipo</li>
+                    <li class="list-group-item"><span class="badge badge-primary"><?= $pessoa->getDsPessoa() === 'F' ? 'Física' : 'Jurídica'; ?></span>Pessoa</li>
                     <li class="list-group-item"><span class="badge badge-primary"><?= $pessoa->getCdRGIE(); ?></span>RG / IE</li>
                     <li class="list-group-item"><span class="badge badge-primary"><?= $pessoa->getCdCPFCNPJ(); ?></span>CPF / CNPJ</li>
                 </ul>
@@ -52,13 +52,13 @@
                 <div class="btn-group btn-group-justified">
 
                     <div class="btn-group">
-                        <button id="btnQuitarCompras" type="button" class='btn btn-success' <?= $pessoa->getVlDividaCompra() == 0 ? "disabled" : "" ?>>
+                        <button id="btnQuitarCompras" type="button" class='btn btn-success' <?= $pessoa->getVlDividaCompra() === 0 ? "disabled" : "" ?>>
                             <span class='glyphicon glyphicon-usd'></span>&nbsp;Quitar Compras
                         </button>
                     </div>
 
                     <div class="btn-group">
-                        <button id="btnQuitarVendas" type="button" class='btn btn-success' <?= $pessoa->getVlDividaVenda() == 0 ? "disabled" : "" ?>>
+                        <button id="btnQuitarVendas" type="button" class='btn btn-success' <?= $pessoa->getVlDividaVenda() === 0 ? "disabled" : "" ?>>
                             <span class='glyphicon glyphicon-usd'></span>&nbsp;Quitar Vendas
                         </button>
                     </div>

@@ -130,7 +130,7 @@ class DB2Platform extends AbstractPlatform
      */
     public function getDateTimeTypeDeclarationSQL(array $fieldDeclaration)
     {
-        if (isset($fieldDeclaration['version']) && $fieldDeclaration['version'] == true) {
+        if (isset($fieldDeclaration['version']) && $fieldDeclaration['version'] === true) {
             return "TIMESTAMP(0) WITH DEFAULT";
         }
 
@@ -428,11 +428,11 @@ class DB2Platform extends AbstractPlatform
         if (isset($field['notnull']) && $field['notnull'] && !isset($field['default'])) {
             if (in_array((string)$field['type'], array("Integer", "BigInteger", "SmallInteger"))) {
                 $field['default'] = 0;
-            } else if((string)$field['type'] == "DateTime") {
+            } else if((string)$field['type'] === "DateTime") {
                 $field['default'] = "00-00-00 00:00:00";
-            } else if ((string)$field['type'] == "Date") {
+            } else if ((string)$field['type'] === "Date") {
                 $field['default'] = "00-00-00";
-            } else if((string)$field['type'] == "Time") {
+            } else if((string)$field['type'] === "Time") {
                 $field['default'] = "00:00:00";
             } else {
                 $field['default'] = '';
@@ -497,7 +497,7 @@ class DB2Platform extends AbstractPlatform
      */
     public function getLocateExpression($str, $substr, $startPos = false)
     {
-        if ($startPos == false) {
+        if ($startPos === false) {
             return 'LOCATE(' . $substr . ', ' . $str . ')';
         }
 

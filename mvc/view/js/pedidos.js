@@ -165,7 +165,7 @@ $(document).ready(function(){
     //-------------------------------------------------------------------------
     $('#data').change(function(){
         var data = $(this).val();
-        if (data == ""){
+        if (data === ""){
             window.location = "?p=pedidos";
         }else{
             window.location = "?p=pedidos&d=" + data;

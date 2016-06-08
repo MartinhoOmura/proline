@@ -80,7 +80,7 @@ abstract class AbstractAsset
      */
     public function isInDefaultNamespace($defaultNamespaceName)
     {
-        return $this->_namespace == $defaultNamespaceName || $this->_namespace === null;
+        return $this->_namespace === $defaultNamespaceName || $this->_namespace === null;
     }
 
     /**
@@ -106,7 +106,7 @@ abstract class AbstractAsset
     public function getShortestName($defaultNamespaceName)
     {
         $shortestName = $this->getName();
-        if ($this->_namespace == $defaultNamespaceName) {
+        if ($this->_namespace === $defaultNamespaceName) {
             $shortestName = $this->_name;
         }
 
@@ -155,7 +155,7 @@ abstract class AbstractAsset
      */
     protected function isIdentifierQuoted($identifier)
     {
-        return (isset($identifier[0]) && ($identifier[0] == '`' || $identifier[0] == '"'));
+        return (isset($identifier[0]) && ($identifier[0] === '`' || $identifier[0] === '"'));
     }
 
     /**

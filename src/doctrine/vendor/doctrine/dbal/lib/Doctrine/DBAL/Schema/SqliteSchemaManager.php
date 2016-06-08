@@ -137,8 +137,8 @@ class SqliteSchemaManager extends AbstractSchemaManager
             foreach ($tableForeignKeys as $key => $value) {
                 $id = $value['id'];
                 $tableForeignKeys[$key]['constraint_name'] = isset($names[$id]) && '' != $names[$id] ? $names[$id] : $id;
-                $tableForeignKeys[$key]['deferrable'] = isset($deferrable[$id]) && 'deferrable' == strtolower($deferrable[$id]) ? true : false;
-                $tableForeignKeys[$key]['deferred'] = isset($deferred[$id]) && 'deferred' == strtolower($deferred[$id]) ? true : false;
+                $tableForeignKeys[$key]['deferrable'] = isset($deferrable[$id]) && 'deferrable' === strtolower($deferrable[$id]) ? true : false;
+                $tableForeignKeys[$key]['deferred'] = isset($deferred[$id]) && 'deferred' === strtolower($deferred[$id]) ? true : false;
             }
         }
 
@@ -167,7 +167,7 @@ class SqliteSchemaManager extends AbstractSchemaManager
         $stmt = $this->_conn->executeQuery( "PRAGMA TABLE_INFO ('$tableName')" );
         $indexArray = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         foreach($indexArray as $indexColumnRow) {
-            if($indexColumnRow['pk'] == "1") {
+            if($indexColumnRow['pk'] === "1") {
                 $indexBuffer[] = array(
                     'key_name' => 'primary',
                     'primary' => true,
@@ -220,17 +220,17 @@ class SqliteSchemaManager extends AbstractSchemaManager
         $autoincrementColumn = null;
         $autoincrementCount = 0;
         foreach ($tableColumns as $tableColumn) {
-            if ('1' == $tableColumn['pk']) {
+            if ('1' === $tableColumn['pk']) {
                 $autoincrementCount++;
-                if (null === $autoincrementColumn && 'integer' == strtolower($tableColumn['type'])) {
+                if (null === $autoincrementColumn && 'integer' === strtolower($tableColumn['type'])) {
                     $autoincrementColumn = $tableColumn['name'];
                 }
             }
         }
 
-        if (1 == $autoincrementCount && null !== $autoincrementColumn) {
+        if (1 === $autoincrementCount && null !== $autoincrementColumn) {
             foreach ($list as $column) {
-                if ($autoincrementColumn == $column->getName()) {
+                if ($autoincrementColumn === $column->getName()) {
                     $column->setAutoincrement(true);
                 }
             }
@@ -263,7 +263,7 @@ class SqliteSchemaManager extends AbstractSchemaManager
         $fixed = false;
         $type = $this->_platform->getDoctrineTypeMapping($dbType);
         $default = $tableColumn['dflt_value'];
-        if  ($default == 'NULL') {
+        if  ($default === 'NULL') {
             $default = null;
         }
         if ($default !== null) {
@@ -330,10 +330,10 @@ class SqliteSchemaManager extends AbstractSchemaManager
             $value = array_change_key_case($value, CASE_LOWER);
             $name = $value['constraint_name'];
             if ( ! isset($list[$name])) {
-                if ( ! isset($value['on_delete']) || $value['on_delete'] == "RESTRICT") {
+                if ( ! isset($value['on_delete']) || $value['on_delete'] === "RESTRICT") {
                     $value['on_delete'] = null;
                 }
-                if ( ! isset($value['on_update']) || $value['on_update'] == "RESTRICT") {
+                if ( ! isset($value['on_update']) || $value['on_update'] === "RESTRICT") {
                     $value['on_update'] = null;
                 }
 

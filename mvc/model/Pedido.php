@@ -218,7 +218,7 @@ class Pedido extends Model {
     // metodo auxiliar
     public function getStEntrega() {
         foreach($this->getItens() as $item){
-            if ($item->getStEntregaItem() == 'PN'){
+            if ($item->getStEntregaItem() === 'PN'){
                 return 'PN';
             }
         }
@@ -227,7 +227,7 @@ class Pedido extends Model {
     
     // metodo auxiliar
     public function getStPedido() {
-        if ($this->getStEntrega() == 'PN' || $this->getStPagamento() == 'PN'){
+        if ($this->getStEntrega() === 'PN' || $this->getStPagamento() === 'PN'){
             return "Pendente";
         }else{
             return "Concluido";

@@ -140,7 +140,7 @@ EOT
         $schema->visit($visitor);
 
         $violations = $visitor->getViolations();
-        if (count($violations) == 0) {
+        if (count($violations) === 0) {
             $output->write("No reserved keywords violations have been found!", true);
         } else {
             $output->write('There are <error>' . count($violations) . '</error> reserved keyword violations in your database schema:', true);

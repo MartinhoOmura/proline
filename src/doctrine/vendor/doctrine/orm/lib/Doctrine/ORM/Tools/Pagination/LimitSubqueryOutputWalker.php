@@ -119,7 +119,7 @@ class LimitSubqueryOutputWalker extends SqlWalker
 
         // Get the root entity and alias from the AST fromClause.
         $from = $AST->fromClause->identificationVariableDeclarations;
-        if (count($from) !== 1) {
+        if (count($from) !=== 1) {
             throw new \RuntimeException("Cannot count query which selects two FROM components, cannot make distinction");
         }
 
@@ -132,7 +132,7 @@ class LimitSubqueryOutputWalker extends SqlWalker
         foreach ($rootIdentifier as $property) {
             if (isset($rootClass->fieldMappings[$property])) {
                 foreach (array_keys($this->rsm->fieldMappings, $property) as $alias) {
-                    if ($this->rsm->columnOwnerMap[$alias] == $rootAlias) {
+                    if ($this->rsm->columnOwnerMap[$alias] === $rootAlias) {
                         $sqlIdentifier[$property] = $alias;
                     }
                 }
@@ -142,7 +142,7 @@ class LimitSubqueryOutputWalker extends SqlWalker
                 $joinColumn = $rootClass->associationMappings[$property]['joinColumns'][0]['name'];
 
                 foreach (array_keys($this->rsm->metaMappings, $joinColumn) as $alias) {
-                    if ($this->rsm->columnOwnerMap[$alias] == $rootAlias) {
+                    if ($this->rsm->columnOwnerMap[$alias] === $rootAlias) {
                         $sqlIdentifier[$property] = $alias;
                     }
                 }
@@ -201,7 +201,7 @@ class LimitSubqueryOutputWalker extends SqlWalker
                     : array_keys($this->rsm->scalarMappings, $item->expression);
 
                 foreach ($possibleAliases as $alias) {
-                    if (!is_object($item->expression) || $this->rsm->columnOwnerMap[$alias] == $item->expression->identificationVariable) {
+                    if (!is_object($item->expression) || $this->rsm->columnOwnerMap[$alias] === $item->expression->identificationVariable) {
                         $sqlOrderColumns[] = $alias;
                         $orderBy[]         = $alias . ' ' . $item->type;
                         break;

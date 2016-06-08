@@ -1037,7 +1037,7 @@ class Connection implements DriverConnection
 
         $logger = $this->_config->getSQLLogger();
 
-        if ($this->_transactionNestingLevel == 1) {
+        if ($this->_transactionNestingLevel === 1) {
             if ($logger) {
                 $logger->startQuery('"START TRANSACTION"');
             }
@@ -1066,7 +1066,7 @@ class Connection implements DriverConnection
      */
     public function commit()
     {
-        if ($this->_transactionNestingLevel == 0) {
+        if ($this->_transactionNestingLevel === 0) {
             throw ConnectionException::noActiveTransaction();
         }
         if ($this->_isRollbackOnly) {
@@ -1077,7 +1077,7 @@ class Connection implements DriverConnection
 
         $logger = $this->_config->getSQLLogger();
 
-        if ($this->_transactionNestingLevel == 1) {
+        if ($this->_transactionNestingLevel === 1) {
             if ($logger) {
                 $logger->startQuery('"COMMIT"');
             }
@@ -1108,7 +1108,7 @@ class Connection implements DriverConnection
      */
     public function rollBack()
     {
-        if ($this->_transactionNestingLevel == 0) {
+        if ($this->_transactionNestingLevel === 0) {
             throw ConnectionException::noActiveTransaction();
         }
 
@@ -1116,7 +1116,7 @@ class Connection implements DriverConnection
 
         $logger = $this->_config->getSQLLogger();
 
-        if ($this->_transactionNestingLevel == 1) {
+        if ($this->_transactionNestingLevel === 1) {
             if ($logger) {
                 $logger->startQuery('"ROLLBACK"');
             }
@@ -1234,7 +1234,7 @@ class Connection implements DriverConnection
      */
     public function setRollbackOnly()
     {
-        if ($this->_transactionNestingLevel == 0) {
+        if ($this->_transactionNestingLevel === 0) {
             throw ConnectionException::noActiveTransaction();
         }
         $this->_isRollbackOnly = true;
@@ -1249,7 +1249,7 @@ class Connection implements DriverConnection
      */
     public function isRollbackOnly()
     {
-        if ($this->_transactionNestingLevel == 0) {
+        if ($this->_transactionNestingLevel === 0) {
             throw ConnectionException::noActiveTransaction();
         }
 

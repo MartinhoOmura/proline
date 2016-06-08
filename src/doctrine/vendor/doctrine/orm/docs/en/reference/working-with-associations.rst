@@ -306,7 +306,7 @@ example that encapsulate much of the association management code:
         }
     
         public function addComment(Comment $comment) {
-            if (count($this->commentsAuthored) == 0) {
+            if (count($this->commentsAuthored) === 0) {
                 $this->setFirstComment($comment);
             }
             $this->comments[] = $comment;

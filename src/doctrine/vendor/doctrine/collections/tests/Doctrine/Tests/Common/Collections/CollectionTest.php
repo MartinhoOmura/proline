@@ -41,9 +41,9 @@ class CollectionTest extends \Doctrine\Tests\DoctrineTestCase
     {
         $this->_coll->add("one");
         $this->_coll->add("two");
-        $exists = $this->_coll->exists(function($k, $e) { return $e == "one"; });
+        $exists = $this->_coll->exists(function($k, $e) { return $e === "one"; });
         $this->assertTrue($exists);
-        $exists = $this->_coll->exists(function($k, $e) { return $e == "other"; });
+        $exists = $this->_coll->exists(function($k, $e) { return $e === "other"; });
         $this->assertFalse($exists);
     }
 
@@ -143,7 +143,7 @@ class CollectionTest extends \Doctrine\Tests\DoctrineTestCase
     {
         $this->_coll[] = true;
         $this->_coll[] = false;
-        $partition = $this->_coll->partition(function($k, $e) { return $e == true; });
+        $partition = $this->_coll->partition(function($k, $e) { return $e === true; });
         $this->assertEquals($partition[0][0], true);
         $this->assertEquals($partition[1][0], false);
     }

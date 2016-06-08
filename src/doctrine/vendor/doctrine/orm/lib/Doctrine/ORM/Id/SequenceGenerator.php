@@ -78,7 +78,7 @@ class SequenceGenerator extends AbstractIdGenerator implements Serializable
      */
     public function generate(EntityManager $em, $entity)
     {
-        if ($this->_maxValue === null || $this->_nextValue == $this->_maxValue) {
+        if ($this->_maxValue === null || $this->_nextValue === $this->_maxValue) {
             // Allocate new values
             $conn = $em->getConnection();
             $sql  = $conn->getDatabasePlatform()->getSequenceNextValSQL($this->_sequenceName);

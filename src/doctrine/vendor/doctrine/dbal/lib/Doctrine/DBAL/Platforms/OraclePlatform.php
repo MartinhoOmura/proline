@@ -83,7 +83,7 @@ class OraclePlatform extends AbstractPlatform
      */
     public function getLocateExpression($str, $substr, $startPos = false)
     {
-        if ($startPos == false) {
+        if ($startPos === false) {
             return 'INSTR('.$str.', '.$substr.')';
         }
 

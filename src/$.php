@@ -87,7 +87,7 @@ function notifyEstoque(){
     $notifications = array();
     $produtos = Produto::findAll();
     foreach($produtos as $produto){
-        if ($produto->getStEstoque() == 'FT'){
+        if ($produto->getStEstoque() === 'FT'){
             $notifications[] = $produto->getIdProduto();
         }
     }

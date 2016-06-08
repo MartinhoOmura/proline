@@ -204,7 +204,7 @@ class PostgreSqlSchemaManager extends AbstractSchemaManager
         $schemas = $this->getExistingSchemaSearchPaths();
         $firstSchema = array_shift($schemas);
 
-        if ($table['schema_name'] == $firstSchema) {
+        if ($table['schema_name'] === $firstSchema) {
             return $table['table_name'];
         } else {
             return $table['schema_name'] . "." . $table['table_name'];
@@ -232,7 +232,7 @@ class PostgreSqlSchemaManager extends AbstractSchemaManager
             // required for getting the order of the columns right.
             foreach ($colNumbers as $colNum) {
                 foreach ($indexColumns as $colRow) {
-                    if ($colNum == $colRow['attnum']) {
+                    if ($colNum === $colRow['attnum']) {
                         $buffer[] = array(
                             'key_name' => $row['relname'],
                             'column_name' => trim($colRow['attname']),
@@ -302,7 +302,7 @@ class PostgreSqlSchemaManager extends AbstractSchemaManager
         }
 
         $length = (isset($tableColumn['length'])) ? $tableColumn['length'] : null;
-        if ($length == '-1' && isset($tableColumn['atttypmod'])) {
+        if ($length === '-1' && isset($tableColumn['atttypmod'])) {
             $length = $tableColumn['atttypmod'] - 4;
         }
         if ((int) $length <= 0) {
@@ -393,7 +393,7 @@ class PostgreSqlSchemaManager extends AbstractSchemaManager
             'length'        => $length,
             'notnull'       => (bool) $tableColumn['isnotnull'],
             'default'       => $tableColumn['default'],
-            'primary'       => (bool) ($tableColumn['pri'] == 't'),
+            'primary'       => (bool) ($tableColumn['pri'] === 't'),
             'precision'     => $precision,
             'scale'         => $scale,
             'fixed'         => $fixed,

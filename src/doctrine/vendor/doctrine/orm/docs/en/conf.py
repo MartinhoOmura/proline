@@ -196,6 +196,6 @@ latex_documents = [
 primary_domain = "dcorm"
 
 def linkcode_resolve(domain, info):
-    if domain == 'dcorm':
+    if domain === 'dcorm':
         return 'http://'
     return None

@@ -24,8 +24,8 @@
                         <tr>
                             <td><?= $pessoa->getIdPessoa() ?></td>
                             <td><?= $pessoa->getNmPessoa() ?></td>
-                            <td><?= $pessoa->getTpPessoa() == 'C' ? 'Cliente' : 'Fornecedor'; ?></td>
-                            <td><?= $pessoa->getDsPessoa() == 'F' ? 'Física' : 'Jurídica';?></td>
+                            <td><?= $pessoa->getTpPessoa() === 'C' ? 'Cliente' : 'Fornecedor'; ?></td>
+                            <td><?= $pessoa->getDsPessoa() === 'F' ? 'Física' : 'Jurídica';?></td>
                             <td >
                                 <?php if ($pessoa->isDevendo()): ?>
                                     <span class="badge alert-warning">Com dividas</span>

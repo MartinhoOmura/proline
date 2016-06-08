@@ -200,7 +200,7 @@ class QueryBuilder
      */
     public function execute()
     {
-        if ($this->type == self::SELECT) {
+        if ($this->type === self::SELECT) {
             return $this->connection->executeQuery($this->getSQL(), $this->params, $this->paramTypes);
         } else {
             return $this->connection->executeUpdate($this->getSQL(), $this->params, $this->paramTypes);
@@ -399,7 +399,7 @@ class QueryBuilder
         $this->state = self::STATE_DIRTY;
 
         if ($append) {
-            if ($sqlPartName == "orderBy" || $sqlPartName == "groupBy" || $sqlPartName == "select" || $sqlPartName == "set") {
+            if ($sqlPartName === "orderBy" || $sqlPartName === "groupBy" || $sqlPartName === "select" || $sqlPartName === "set") {
                 foreach ($sqlPart as $part) {
                     $this->sqlParts[$sqlPartName][] = $part;
                 }
@@ -716,7 +716,7 @@ class QueryBuilder
      */
     public function where($predicates)
     {
-        if ( ! (func_num_args() == 1 && $predicates instanceof CompositeExpression) ) {
+        if ( ! (func_num_args() === 1 && $predicates instanceof CompositeExpression) ) {
             $predicates = new CompositeExpression(CompositeExpression::TYPE_AND, func_get_args());
         }
 
@@ -852,7 +852,7 @@ class QueryBuilder
      */
     public function having($having)
     {
-        if ( ! (func_num_args() == 1 && $having instanceof CompositeExpression)) {
+        if ( ! (func_num_args() === 1 && $having instanceof CompositeExpression)) {
             $having = new CompositeExpression(CompositeExpression::TYPE_AND, func_get_args());
         }
 
@@ -1024,7 +1024,7 @@ class QueryBuilder
                 . ($this->sqlParts['having'] !== null ? ' HAVING ' . ((string) $this->sqlParts['having']) : '')
                 . ($this->sqlParts['orderBy'] ? ' ORDER BY ' . implode(', ', $this->sqlParts['orderBy']) : '');
 
-        return ($this->maxResults === null && $this->firstResult == null)
+        return ($this->maxResults === null && $this->firstResult === null)
             ? $query
             : $this->connection->getDatabasePlatform()->modifyLimitQuery($query, $this->maxResults, $this->firstResult);
     }

@@ -104,7 +104,7 @@ class DBALException extends \Exception
         return '[' . implode(', ', array_map(function($param) {
             $json = @json_encode($param);
 
-            if (! is_string($json) || $json == 'null' && is_string($param)) {
+            if (! is_string($json) || $json === 'null' && is_string($param)) {
                 // JSON encoding failed, this is not a UTF-8 string.
                 return '"\x' . implode('\x', str_split(bin2hex($param), 2)) . '"';
             }

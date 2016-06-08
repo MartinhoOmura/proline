@@ -1,4 +1,4 @@
-<div id="sub-registro<?= $item->getIdItem(); ?>" class="panel panel-<?= $item->getStEntregaitem() == "PN" ? "warning" : "success" ?> sub-registro">
+<div id="sub-registro<?= $item->getIdItem(); ?>" class="panel panel-<?= $item->getStEntregaitem() === "PN" ? "warning" : "success" ?> sub-registro">
 
     <div class="panel-heading collapsed" data-toggle="collapse" data-parent="#itens<?= $pedido->getIdPedido(); ?>" data-target="#sub-collapse<?= $item->getIdItem(); ?>">
 
@@ -126,7 +126,7 @@
 
                 <div class='col-xs-12 col-md-4'>
 
-                    <button type="button" class='btn btn-info btn-block btnEntregar' <?= $item->getStEntregaItem() == 'EN' ? "disabled" : "" ?>>
+                    <button type="button" class='btn btn-info btn-block btnEntregar' <?= $item->getStEntregaItem() === 'EN' ? "disabled" : "" ?>>
                         <span class='glyphicon glyphicon-road'></span>&nbsp;Entregar
                     </button>
 

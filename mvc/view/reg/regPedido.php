@@ -19,12 +19,12 @@
                 <div class="col-xs-12 col-md-4">
                     <ul class="list-group">
                         <li class="list-group-item"><span class="badge badge-primary"><?= toDMY($pedido->getDtPedido()); ?></span>Data</li>
-                        <?php if ($pedido->getStPagamento() == 'PN'): ?>
+                        <?php if ($pedido->getStPagamento() === 'PN'): ?>
                             <li class="list-group-item"><span class="badge alert-warning">Pendente</span>Pagamento</li>
                         <?php else: ?>
                             <li class="list-group-item"><span class="badge alert-success">Pago</span>Pagamento</li>
                         <?php endif; ?>
-                        <?php if ($pedido->getStEntrega() == 'PN'): ?>
+                        <?php if ($pedido->getStEntrega() === 'PN'): ?>
                             <li class="list-group-item"><span class="badge alert-warning">Pendente</span>Entrega</li>
                         <?php else: ?>
                             <li class="list-group-item"><span class="badge alert-success">Entregue</span>Entrega</li>
@@ -137,13 +137,13 @@
                     <div class="btn-group btn-group-justified">
 
                         <div class="btn-group">
-                            <button id="btnPagar" type="button" class='btn btn-success btn-block' <?= $pedido->getStPagamento() == 'PG' ? "disabled" : "" ?>>
+                            <button id="btnPagar" type="button" class='btn btn-success btn-block' <?= $pedido->getStPagamento() === 'PG' ? "disabled" : "" ?>>
                         <span class='glyphicon glyphicon-usd'></span>&nbsp;Pagar
                     </button>
                         </div>
 
                         <div class="btn-group">
-                            <button id="btnEntregarTudo" type="button" class='btn btn-info btn-block' <?= $pedido->getStEntrega() == 'PN' ? "" : "disabled" ?>>
+                            <button id="btnEntregarTudo" type="button" class='btn btn-info btn-block' <?= $pedido->getStEntrega() === 'PN' ? "" : "disabled" ?>>
                         <span class='glyphicon glyphicon-road'></span>&nbsp;Entregar Pedido
                     </button>
                         </div>

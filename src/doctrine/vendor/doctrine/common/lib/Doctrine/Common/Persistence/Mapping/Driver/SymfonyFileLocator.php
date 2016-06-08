@@ -166,7 +166,7 @@ class SymfonyFileLocator implements FileLocator
                 foreach ($iterator as $file) {
                     $fileName = $file->getBasename($this->fileExtension);
 
-                    if ($fileName == $file->getBasename() || $fileName == $globalBasename) {
+                    if ($fileName === $file->getBasename() || $fileName === $globalBasename) {
                         continue;
                     }
 

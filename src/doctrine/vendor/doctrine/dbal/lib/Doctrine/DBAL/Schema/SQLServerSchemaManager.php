@@ -59,7 +59,7 @@ class SQLServerSchemaManager extends AbstractSchemaManager
         while ($default != ($default2 = preg_replace("/^\((.*)\)$/", '$1', $default))) {
             $default = trim($default2, "'");
 
-            if ($default == 'getdate()') {
+            if ($default === 'getdate()') {
                 $default = $this->_platform->getCurrentTimestampSQL();
             }
         }
@@ -73,7 +73,7 @@ class SQLServerSchemaManager extends AbstractSchemaManager
                 break;
             case 'varchar':
                 // TEXT type is returned as VARCHAR(MAX) with a length of -1
-                if ($length == -1) {
+                if ($length === -1) {
                     $dbType = 'text';
                 }
                 break;
@@ -91,7 +91,7 @@ class SQLServerSchemaManager extends AbstractSchemaManager
         }
 
         $options = array(
-            'length' => ($length == 0 || !in_array($type, array('text', 'string'))) ? null : $length,
+            'length' => ($length === 0 || !in_array($type, array('text', 'string'))) ? null : $length,
             'unsigned' => false,
             'fixed' => (bool) $fixed,
             'default' => $default !== 'NULL' ? $default : null,
@@ -102,7 +102,7 @@ class SQLServerSchemaManager extends AbstractSchemaManager
         );
 
         $platformOptions = array(
-            'collate' => $tableColumn['collation'] == 'NULL' ? null : $tableColumn['collation']
+            'collate' => $tableColumn['collation'] === 'NULL' ? null : $tableColumn['collation']
         );
 
         $column = new Column($tableColumn['name'], Type::getType($type), $options);
@@ -202,7 +202,7 @@ class SQLServerSchemaManager extends AbstractSchemaManager
         try {
             $tableIndexes = $this->_conn->fetchAll($sql);
         } catch(\PDOException $e) {
-            if ($e->getCode() == "IMSSP") {
+            if ($e->getCode() === "IMSSP") {
                 return array();
             } else {
                 throw $e;

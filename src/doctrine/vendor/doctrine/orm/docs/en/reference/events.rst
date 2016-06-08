@@ -675,7 +675,7 @@ A simple example for this event looks like:
         public function preUpdate(PreUpdateEventArgs $eventArgs)
         {
             if ($eventArgs->getEntity() instanceof User) {
-                if ($eventArgs->hasChangedField('name') && $eventArgs->getNewValue('name') == 'Alice') {
+                if ($eventArgs->hasChangedField('name') && $eventArgs->getNewValue('name') === 'Alice') {
                     $eventArgs->setNewValue('name', 'Bob');
                 }
             }

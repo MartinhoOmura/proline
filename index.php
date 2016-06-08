@@ -8,7 +8,7 @@
     include "src/DB.php"; // banco de dados
     
     if (isset($_GET['p'])){
-        if ($_GET['p'] == "sair"){
+        if ($_GET['p'] === "sair"){
             unset($_SESSION['usuario']);
         }
     }

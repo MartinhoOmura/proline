@@ -5,7 +5,7 @@
             <span class="input-group-btn">
                 <select id="dateType" class="btn">
                     <option value="date">Dia</option>
-                    <option value="month" <?= $_GET['t'] == "month" ? "selected" : "" ?>>Mês</option>
+                    <option value="month" <?= $_GET['t'] === "month" ? "selected" : "" ?>>Mês</option>
                 </select>
             </span>
         </div>
@@ -40,7 +40,7 @@
                         if (!isset($_GET['d'])){
                             $pagamentos = Pagamento::findAll();
                         }else{
-                            if ($_GET['t'] == 'date'){
+                            if ($_GET['t'] === 'date'){
                                 $pagamentos = Pagamento::findBy(array("dtPagamento" => $_GET['d']));
                             }else{
                                 $data = $_GET['d'];
@@ -67,15 +67,15 @@
                                     }
                                 ?>
                                 </td>
-                                <td class="numeric"><strong><?= $pagamento->getPedido()->getTpPedido() == 'V' ? toBRL($pagamento->getVlPagamento()) : "" ?></strong></td>
-                                <td class="numeric"><strong><?= $pagamento->getPedido()->getTpPedido() == 'C' ? toBRL($pagamento->getVlPagamento()) : "" ?></strong></td>
+                                <td class="numeric"><strong><?= $pagamento->getPedido()->getTpPedido() === 'V' ? toBRL($pagamento->getVlPagamento()) : "" ?></strong></td>
+                                <td class="numeric"><strong><?= $pagamento->getPedido()->getTpPedido() === 'C' ? toBRL($pagamento->getVlPagamento()) : "" ?></strong></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
 
                     <tfoot class="panel-footer">
                         <tr>
-                            <td class="text-right"><strong>Total <?= isset($_GET['t']) ? ($_GET['t'] == "date" ? "do dia" : "do mês") : '' ?></strong></td>
+                            <td class="text-right"><strong>Total <?= isset($_GET['t']) ? ($_GET['t'] === "date" ? "do dia" : "do mês") : '' ?></strong></td>
                             <td class="text-right"><?= toBRL(Pagamento::entradaDia(isset($_GET['d']) ? $_GET['d'] : '')); ?></td>
                             <td class="text-right"><?= toBRL(Pagamento::saidaDia(isset($_GET['d']) ? $_GET['d'] : '')); ?></td>
                         </tr>

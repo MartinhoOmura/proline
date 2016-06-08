@@ -36,7 +36,7 @@ class DB2Connection implements \Doctrine\DBAL\Driver\Connection
      */
     public function __construct(array $params, $username, $password, $driverOptions = array())
     {
-        $isPersistant = (isset($params['persistent']) && $params['persistent'] == true);
+        $isPersistant = (isset($params['persistent']) && $params['persistent'] === true);
 
         if ($isPersistant) {
             $this->_conn = db2_pconnect($params['dbname'], $username, $password, $driverOptions);
@@ -78,7 +78,7 @@ class DB2Connection implements \Doctrine\DBAL\Driver\Connection
     public function quote($input, $type=\PDO::PARAM_STR)
     {
         $input = db2_escape_string($input);
-        if ($type == \PDO::PARAM_INT ) {
+        if ($type === \PDO::PARAM_INT ) {
             return $input;
         } else {
             return "'".$input."'";

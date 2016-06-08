@@ -132,13 +132,13 @@ class SchemaDiff
     {
         $sql = array();
 
-        if ($platform->supportsForeignKeyConstraints() && $saveMode == false) {
+        if ($platform->supportsForeignKeyConstraints() && $saveMode === false) {
             foreach ($this->orphanedForeignKeys as $orphanedForeignKey) {
                 $sql[] = $platform->getDropForeignKeySQL($orphanedForeignKey, $orphanedForeignKey->getLocalTableName());
             }
         }
 
-        if ($platform->supportsSequences() == true) {
+        if ($platform->supportsSequences() === true) {
             foreach ($this->changedSequences as $sequence) {
                 $sql[] = $platform->getAlterSequenceSQL($sequence);
             }

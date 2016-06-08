@@ -169,14 +169,14 @@ class Pagamento extends Model {
             }
             
             foreach($pagamentos as $pagamento){
-                if ($pagamento->getPedido()->getTpPedido() == 'V'){
+                if ($pagamento->getPedido()->getTpPedido() === 'V'){
                     $valor += $pagamento->getVlPagamento();
                 }
             }
         }else{
             $pagamentos = Pagamento::findAll();
             foreach($pagamentos as $pagamento){
-                if ($pagamento->getPedido()->getTpPedido() == 'V'){
+                if ($pagamento->getPedido()->getTpPedido() === 'V'){
                     $valor += $pagamento->getVlPagamento();
                 }
             }
@@ -204,14 +204,14 @@ class Pagamento extends Model {
             }
             
             foreach($pagamentos as $pagamento){
-                if ($pagamento->getPedido()->getTpPedido() == 'C'){
+                if ($pagamento->getPedido()->getTpPedido() === 'C'){
                     $valor += $pagamento->getVlPagamento();
                 }
             }
         }else{
             $pagamentos = Pagamento::findAll();
             foreach($pagamentos as $pagamento){
-                if ($pagamento->getPedido()->getTpPedido() == 'C'){
+                if ($pagamento->getPedido()->getTpPedido() === 'C'){
                     $valor += $pagamento->getVlPagamento();
                 }
             }
@@ -240,7 +240,7 @@ class Pagamento extends Model {
             }
             
             foreach($pagamentos as $pagamento){
-                if ($pagamento->getPedido()->getTpPedido() == 'V'){
+                if ($pagamento->getPedido()->getTpPedido() === 'V'){
                     $valor += $pagamento->getVlPagamento();
                 }
             }
@@ -248,7 +248,7 @@ class Pagamento extends Model {
         }else{
             $pagamentos = Pagamento::findAll();
             foreach($pagamentos as $pagamento){
-                if ($pagamento->getPedido()->getTpPedido() == 'V'){
+                if ($pagamento->getPedido()->getTpPedido() === 'V'){
                     $valor += $pagamento->getVlPagamento();
                 }
             }
@@ -275,14 +275,14 @@ class Pagamento extends Model {
                 $pagamentos = $qb->select('p')->from('Pagamento', 'p')->where("p.dtPagamento <= '$data'")->getQuery()->getResult();
             }
             foreach($pagamentos as $pagamento){
-                if ($pagamento->getPedido()->getTpPedido() == 'C'){
+                if ($pagamento->getPedido()->getTpPedido() === 'C'){
                     $valor += $pagamento->getVlPagamento();
                 }
             }
         }else{
             $pagamentos = Pagamento::findAll();
             foreach($pagamentos as $pagamento){
-                if ($pagamento->getPedido()->getTpPedido() == 'C'){
+                if ($pagamento->getPedido()->getTpPedido() === 'C'){
                     $valor += $pagamento->getVlPagamento();
                 }
             }

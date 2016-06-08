@@ -601,7 +601,7 @@ class SQLServerPlatform extends AbstractPlatform
      */
     public function getLocateExpression($str, $substr, $startPos = false)
     {
-        if ($startPos == false) {
+        if ($startPos === false) {
             return 'CHARINDEX(' . $substr . ', ' . $str . ')';
         }
 
@@ -649,11 +649,11 @@ class SQLServerPlatform extends AbstractPlatform
          */
         $pattern = "'%[^' + $char + ']%'";
 
-        if ($pos == self::TRIM_LEADING) {
+        if ($pos === self::TRIM_LEADING) {
             return 'stuff(' . $str . ', 1, patindex(' . $pattern . ', ' . $str . ') - 1, null)';
         }
 
-        if ($pos == self::TRIM_TRAILING) {
+        if ($pos === self::TRIM_TRAILING) {
             return 'reverse(stuff(reverse(' . $str . '), 1, patindex(' . $pattern . ', reverse(' . $str . ')) - 1, null))';
         }
 
@@ -1078,11 +1078,11 @@ class SQLServerPlatform extends AbstractPlatform
             return " DEFAULT " . $field['default'];
         }
 
-        if ((string) $field['type'] == 'DateTime' && $field['default'] == $this->getCurrentTimestampSQL()) {
+        if ((string) $field['type'] === 'DateTime' && $field['default'] === $this->getCurrentTimestampSQL()) {
             return " DEFAULT " . $this->getCurrentTimestampSQL();
         }
 
-        if ((string) $field['type'] == 'Boolean') {
+        if ((string) $field['type'] === 'Boolean') {
             return " DEFAULT '" . $this->convertBooleans($field['default']) . "'";
         }
 

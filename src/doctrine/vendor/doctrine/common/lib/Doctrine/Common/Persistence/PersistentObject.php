@@ -241,11 +241,11 @@ abstract class PersistentObject implements ObjectManagerAware
     {
         $command = substr($method, 0, 3);
         $field = lcfirst(substr($method, 3));
-        if ($command == "set") {
+        if ($command === "set") {
             $this->set($field, $args);
-        } else if ($command == "get") {
+        } else if ($command === "get") {
             return $this->get($field);
-        } else if ($command == "add") {
+        } else if ($command === "add") {
             $this->add($field, $args);
         } else {
             throw new \BadMethodCallException("There is no method ".$method." on ".$this->cm->getName());

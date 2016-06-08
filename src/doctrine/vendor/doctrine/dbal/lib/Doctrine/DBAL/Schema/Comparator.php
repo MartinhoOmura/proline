@@ -228,7 +228,7 @@ class Comparator
                     unset($table1Indexes[$index1Name]);
                     unset($table2Indexes[$index2Name]);
                 } else {
-                    if ($index1Name == $index2Name) {
+                    if ($index1Name === $index2Name) {
                         $tableDifferences->changedIndexes[$index2Name] = $table2Indexes[$index2Name];
                         unset($table1Indexes[$index1Name]);
                         unset($table2Indexes[$index2Name]);
@@ -257,7 +257,7 @@ class Comparator
                     unset($fromFkeys[$key1]);
                     unset($toFkeys[$key2]);
                 } else {
-                    if (strtolower($constraint1->getName()) == strtolower($constraint2->getName())) {
+                    if (strtolower($constraint1->getName()) === strtolower($constraint2->getName())) {
                         $tableDifferences->changedForeignKeys[] = $constraint2;
                         $changes++;
                         unset($fromFkeys[$key1]);
@@ -293,14 +293,14 @@ class Comparator
         $renameCandidates = array();
         foreach ($tableDifferences->addedColumns as $addedColumnName => $addedColumn) {
             foreach ($tableDifferences->removedColumns as $removedColumn) {
-                if (count($this->diffColumn($addedColumn, $removedColumn)) == 0) {
+                if (count($this->diffColumn($addedColumn, $removedColumn)) === 0) {
                     $renameCandidates[$addedColumn->getName()][] = array($removedColumn, $addedColumn, $addedColumnName);
                 }
             }
         }
 
         foreach ($renameCandidates as $candidateColumns) {
-            if (count($candidateColumns) == 1) {
+            if (count($candidateColumns) === 1) {
                 list($removedColumn, $addedColumn) = $candidateColumns[0];
                 $removedColumnName = strtolower($removedColumn->getName());
                 $addedColumnName = strtolower($addedColumn->getName());

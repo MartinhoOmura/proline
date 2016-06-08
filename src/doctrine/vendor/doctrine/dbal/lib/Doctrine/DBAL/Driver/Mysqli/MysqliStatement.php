@@ -277,7 +277,7 @@ class MysqliStatement implements \IteratorAggregate, Statement
         $fetchMode = $fetchMode ?: $this->_defaultFetchMode;
 
         $rows = array();
-        if (PDO::FETCH_COLUMN == $fetchMode) {
+        if (PDO::FETCH_COLUMN === $fetchMode) {
             while (($row = $this->fetchColumn()) !== false) {
                 $rows[] = $row;
             }

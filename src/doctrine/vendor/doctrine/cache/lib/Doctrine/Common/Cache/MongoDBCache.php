@@ -128,7 +128,7 @@ class MongoDBCache extends CacheProvider
             array('upsert' => true, 'multiple' => false)
         );
 
-        return isset($result['ok']) ? $result['ok'] == 1 : true;
+        return isset($result['ok']) ? $result['ok'] === 1 : true;
     }
 
     /**
@@ -138,7 +138,7 @@ class MongoDBCache extends CacheProvider
     {
         $result = $this->collection->remove(array('_id' => $id));
 
-        return isset($result['n']) ? $result['n'] == 1 : true;
+        return isset($result['n']) ? $result['n'] === 1 : true;
     }
 
     /**
@@ -149,7 +149,7 @@ class MongoDBCache extends CacheProvider
         // Use remove() in lieu of drop() to maintain any collection indexes
         $result = $this->collection->remove();
 
-        return isset($result['ok']) ? $result['ok'] == 1 : true;
+        return isset($result['ok']) ? $result['ok'] === 1 : true;
     }
 
     /**

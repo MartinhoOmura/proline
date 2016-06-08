@@ -74,7 +74,7 @@ class TableGenerator extends AbstractIdGenerator
      */
     public function generate(EntityManager $em, $entity)
     {
-        if ($this->_maxValue === null || $this->_nextValue == $this->_maxValue) {
+        if ($this->_maxValue === null || $this->_nextValue === $this->_maxValue) {
             // Allocate new values
             $conn = $em->getConnection();
 

@@ -79,7 +79,7 @@ final class PhpParser
         $lineCnt = 0;
         $file = new SplFileObject($filename);
         while (!$file->eof()) {
-            if ($lineCnt++ == $lineNumber) {
+            if ($lineCnt++ === $lineNumber) {
                 break;
             }
 

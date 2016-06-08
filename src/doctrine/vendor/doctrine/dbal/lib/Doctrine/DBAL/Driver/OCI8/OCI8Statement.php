@@ -113,7 +113,7 @@ class OCI8Statement implements \IteratorAggregate, Statement
         $stmtLen = strlen($statement);
         $paramMap = array();
         for ($i = 0; $i < $stmtLen; $i++) {
-            if ($statement[$i] == '?' && !$inLiteral) {
+            if ($statement[$i] === '?' && !$inLiteral) {
                 // real positional parameter detected
                 $paramMap[$count] = ":param$count";
                 $len = strlen($paramMap[$count]);
@@ -121,7 +121,7 @@ class OCI8Statement implements \IteratorAggregate, Statement
                 $i += $len-1; // jump ahead
                 $stmtLen = strlen($statement); // adjust statement length
                 ++$count;
-            } else if ($statement[$i] == "'" || $statement[$i] == '"') {
+            } else if ($statement[$i] === "'" || $statement[$i] === '"') {
                 $inLiteral = ! $inLiteral; // switch state!
             }
         }
@@ -144,7 +144,7 @@ class OCI8Statement implements \IteratorAggregate, Statement
     {
         $column = isset($this->_paramMap[$column]) ? $this->_paramMap[$column] : $column;
 
-        if ($type == \PDO::PARAM_LOB) {
+        if ($type === \PDO::PARAM_LOB) {
             $lob = oci_new_descriptor($this->_dbh, OCI_D_LOB);
             $lob->writeTemporary($variable, OCI_TEMP_BLOB);
 
@@ -267,14 +267,14 @@ class OCI8Statement implements \IteratorAggregate, Statement
             }
         } else {
             $fetchStructure = OCI_FETCHSTATEMENT_BY_ROW;
-            if ($fetchMode == PDO::FETCH_COLUMN) {
+            if ($fetchMode === PDO::FETCH_COLUMN) {
                 $fetchStructure = OCI_FETCHSTATEMENT_BY_COLUMN;
             }
 
             oci_fetch_all($this->_sth, $result, 0, -1,
                     self::$fetchModeMap[$fetchMode] | OCI_RETURN_NULLS | $fetchStructure | OCI_RETURN_LOBS);
 
-            if ($fetchMode == PDO::FETCH_COLUMN) {
+            if ($fetchMode === PDO::FETCH_COLUMN) {
                 $result = $result[0];
             }
         }

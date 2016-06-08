@@ -367,7 +367,7 @@ class ArrayCollection implements Collection, Selectable
         if ($orderings = $criteria->getOrderings()) {
             $next = null;
             foreach (array_reverse($orderings) as $field => $ordering) {
-                $next = ClosureExpressionVisitor::sortByField($field, $ordering == 'DESC' ? -1 : 1, $next);
+                $next = ClosureExpressionVisitor::sortByField($field, $ordering === 'DESC' ? -1 : 1, $next);
             }
 
             usort($filtered, $next);

@@ -79,7 +79,7 @@ class Table extends AbstractAsset
      */
     public function __construct($tableName, array $columns=array(), array $indexes=array(), array $fkConstraints=array(), $idGeneratorType = 0, array $options=array())
     {
-        if (strlen($tableName) == 0) {
+        if (strlen($tableName) === 0) {
             throw DBALException::invalidTableName($tableName);
         }
 
@@ -152,7 +152,7 @@ class Table extends AbstractAsset
      */
     public function addIndex(array $columnNames, $indexName = null, array $flags = array())
     {
-        if($indexName == null) {
+        if($indexName === null) {
             $indexName = $this->_generateIdentifierName(
                 array_merge(array($this->getName()), $columnNames), "idx", $this->_getMaxIdentifierLength()
             );

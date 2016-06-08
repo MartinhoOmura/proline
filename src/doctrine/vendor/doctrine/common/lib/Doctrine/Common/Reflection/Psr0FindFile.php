@@ -48,7 +48,7 @@ class Psr0FindFile implements ClassFinderInterface
     public function findFile($class)
     {
         $lastNsPos = strrpos($class, '\\');
-        if ('\\' == $class[0]) {
+        if ('\\' === $class[0]) {
             $class = substr($class, 1);
         }
 

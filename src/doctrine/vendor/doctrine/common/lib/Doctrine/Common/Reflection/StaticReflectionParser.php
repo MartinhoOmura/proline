@@ -189,7 +189,7 @@ class StaticReflectionParser implements ReflectionProviderInterface
                                 $postfix = '';
                             }
                             foreach ($this->useStatements as $alias => $use) {
-                                if ($alias == $prefix) {
+                                if ($alias === $prefix) {
                                     $this->parentClassName = '\\' . $use . $postfix;
                                     $fullySpecified = true;
                               }

@@ -198,7 +198,7 @@ class Item extends Model {
         $valor = $this->getQtEntregue();
 
         // se a unidade ja é a desejada, retorne o valor cadastrado
-        if ($this->getCdUnidadeItem() == $unidade) {
+        if ($this->getCdUnidadeItem() === $unidade) {
             return $valor;
         } else {
             // tratar unidade desejada caso seja diferente da cadastrada

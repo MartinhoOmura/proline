@@ -36,10 +36,10 @@
                         <tr>
                             <td><?= $pedido->getIdPedido() ?></td>
                             <td><?= toDMY($pedido->getDtPedido()) ?></td>
-                            <td><?= $pedido->getTpPedido() == "C" ? "Compra" : "Venda" ?></td>
+                            <td><?= $pedido->getTpPedido() === "C" ? "Compra" : "Venda" ?></td>
                             
                             <td>
-                                <?php if ($pedido->getStPagamento() == 'PN'): ?>
+                                <?php if ($pedido->getStPagamento() === 'PN'): ?>
                                     <span class="badge alert-warning">Pendente</span>
                                 <?php else: ?>
                                     <span class="badge alert-success">Concluido</span>
@@ -47,7 +47,7 @@
                             </td>
                             
                             <td>
-                                <?php if ($pedido->getStEntrega() == 'PN'): ?>
+                                <?php if ($pedido->getStEntrega() === 'PN'): ?>
                                     <span class="badge alert-warning">Pendente</span>
                                 <?php else: ?>
                                     <span class="badge alert-success">Concluido</span>

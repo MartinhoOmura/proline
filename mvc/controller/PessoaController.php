@@ -22,11 +22,11 @@
                 $pessoa = Pessoa::find($id);
                 $pedidos = $pessoa->getPedidos();
                 foreach($pedidos as $pedido){
-                    if ($pedido->getTpPedido() == 'C'){
-                        if ($pedido->getStEntrega() == 'PN'){
+                    if ($pedido->getTpPedido() === 'C'){
+                        if ($pedido->getStEntrega() === 'PN'){
                             $itens = $pedido->getItens();
                             foreach($itens as $item){
-                                if ($item->getStEntregaItem() == 'PN'){
+                                if ($item->getStEntregaItem() === 'PN'){
                                     $entrega = array(
                                         "nrEntrega" => count($item->getEntregas()) + 1,
                                         "dtEntrega" => date('Y-m-d', time()),
@@ -47,11 +47,11 @@
                 $pessoa = Pessoa::find($id);
                 $pedidos = $pessoa->getPedidos();
                 foreach($pedidos as $pedido){
-                    if ($pedido->getTpPedido() == 'V'){
-                        if ($pedido->getStEntrega() == 'PN'){
+                    if ($pedido->getTpPedido() === 'V'){
+                        if ($pedido->getStEntrega() === 'PN'){
                             $itens = $pedido->getItens();
                             foreach($itens as $item){
-                                if ($item->getStEntregaItem() == 'PN'){
+                                if ($item->getStEntregaItem() === 'PN'){
                                     $entrega = array(
                                         "nrEntrega" => count($item->getEntregas()) + 1,
                                         "dtEntrega" => date('Y-m-d', time()),
@@ -72,8 +72,8 @@
                 $pessoa = Pessoa::find($id);
                 $pedidos = $pessoa->getPedidos();
                 foreach($pedidos as $pedido){
-                    if ($pedido->getTpPedido() == 'C'){
-                        if ($pedido->getStPagamento() == 'PN'){
+                    if ($pedido->getTpPedido() === 'C'){
+                        if ($pedido->getStPagamento() === 'PN'){
                             $pagamento = array(
                                 "nrPagamento" => count($pedido->getPagamentos()) + 1,
                                 "dtPagamento" => date('Y-m-d', time()),
@@ -93,8 +93,8 @@
                 $pessoa = Pessoa::find($id);
                 $pedidos = $pessoa->getPedidos();
                 foreach($pedidos as $pedido){
-                    if ($pedido->getTpPedido() == 'V'){
-                        if ($pedido->getStPagamento() == 'PN'){
+                    if ($pedido->getTpPedido() === 'V'){
+                        if ($pedido->getStPagamento() === 'PN'){
                             $pagamento = array(
                                 "nrPagamento" => count($pedido->getPagamentos()) + 1,
                                 "dtPagamento" => date('Y-m-d', time()),

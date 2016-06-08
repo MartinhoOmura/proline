@@ -186,8 +186,8 @@ class Pessoa extends Model {
         $valor = 0;
         $pedidos = $this->getPedidos();
         foreach($pedidos as $pedido){
-            if ($pedido->getTpPedido() == 'C'){
-                if ($pedido->getStPagamento() == 'PN'){
+            if ($pedido->getTpPedido() === 'C'){
+                if ($pedido->getStPagamento() === 'PN'){
                     $valor += $pedido->getVlRestante();
                 }
             }
@@ -200,8 +200,8 @@ class Pessoa extends Model {
         $valor = 0;
         $pedidos = $this->getPedidos();
         foreach($pedidos as $pedido){
-            if ($pedido->getTpPedido() == 'V'){
-                if ($pedido->getStPagamento() == 'PN'){
+            if ($pedido->getTpPedido() === 'V'){
+                if ($pedido->getStPagamento() === 'PN'){
                     $valor += $pedido->getVlRestante();
                 }
             }
@@ -218,10 +218,10 @@ class Pessoa extends Model {
     public function isDevendoEntregarCompras(){
         $pedidos = $this->getPedidos();
         foreach($pedidos as $pedido){
-            if ($pedido->getTpPedido() == 'C'){
+            if ($pedido->getTpPedido() === 'C'){
                 $itens = $pedido->getItens();
                 foreach($itens as $item){
-                    if ($item->getStEntregaItem() == 'PN'){
+                    if ($item->getStEntregaItem() === 'PN'){
                         return true;
                     }
                 }
@@ -234,10 +234,10 @@ class Pessoa extends Model {
     public function isDevendoEntregarVendas(){
         $pedidos = $this->getPedidos();
         foreach($pedidos as $pedido){
-            if ($pedido->getTpPedido() == 'V'){
+            if ($pedido->getTpPedido() === 'V'){
                 $itens = $pedido->getItens();
                 foreach($itens as $item){
-                    if ($item->getStEntregaItem() == 'PN'){
+                    if ($item->getStEntregaItem() === 'PN'){
                         return true;
                     }
                 }

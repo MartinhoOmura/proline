@@ -86,8 +86,8 @@ class DB2SchemaManager extends AbstractSchemaManager
             'length'        => $length,
             'unsigned'      => (bool)$unsigned,
             'fixed'         => (bool)$fixed,
-            'default'       => ($tableColumn['default'] == "NULL") ? null : $tableColumn['default'],
-            'notnull'       => (bool) ($tableColumn['nulls'] == 'N'),
+            'default'       => ($tableColumn['default'] === "NULL") ? null : $tableColumn['default'],
+            'notnull'       => (bool) ($tableColumn['nulls'] === 'N'),
             'scale'         => null,
             'precision'     => null,
             'platformOptions' => array(),
@@ -125,8 +125,8 @@ class DB2SchemaManager extends AbstractSchemaManager
         $indexes = array();
         foreach($tableIndexes as $indexKey => $data) {
             $data = array_change_key_case($data, \CASE_LOWER);
-            $unique = ($data['uniquerule'] == "D") ? false : true;
-            $primary = ($data['uniquerule'] == "P");
+            $unique = ($data['uniquerule'] === "D") ? false : true;
+            $primary = ($data['uniquerule'] === "P");
 
             $indexName = strtolower($data['name']);
 
@@ -187,9 +187,9 @@ class DB2SchemaManager extends AbstractSchemaManager
      */
     protected function _getPortableForeignKeyRuleDef($def)
     {
-        if ($def == "C") {
+        if ($def === "C") {
             return "CASCADE";
-        } else if ($def == "N") {
+        } else if ($def === "N") {
             return "SET NULL";
         }
 

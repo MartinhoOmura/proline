@@ -91,7 +91,7 @@ class MySqlPlatform extends AbstractPlatform
      */
     public function getLocateExpression($str, $substr, $startPos = false)
     {
-        if ($startPos == false) {
+        if ($startPos === false) {
             return 'LOCATE(' . $substr . ', ' . $str . ')';
         }
 
@@ -289,7 +289,7 @@ class MySqlPlatform extends AbstractPlatform
      */
     public function getDateTimeTypeDeclarationSQL(array $fieldDeclaration)
     {
-        if (isset($fieldDeclaration['version']) && $fieldDeclaration['version'] == true) {
+        if (isset($fieldDeclaration['version']) && $fieldDeclaration['version'] === true) {
             return 'TIMESTAMP';
         }
 
@@ -619,7 +619,7 @@ class MySqlPlatform extends AbstractPlatform
             }
 
             foreach ($diff->addedIndexes as $addKey => $addIndex) {
-                if ($remIndex->getColumns() == $addIndex->getColumns()) {
+                if ($remIndex->getColumns() === $addIndex->getColumns()) {
 
                     $indexClause = 'INDEX ' . $addIndex->getName();
 
